@@ -1,9 +1,11 @@
-FROM debian:buster-slim
+FROM ubuntu:focal
 
 LABEL maintainer="raackley@protonmail.com"
 
 RUN apt-get update && \
-    apt-get install -y ca-certificates netcat
+    apt-get -y upgrade && \
+    apt-get install -y ca-certificates netcat && \
+    apt-get -y autoremove
 
 ADD https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb /cloudflared-stable-linux-amd64.deb
 
