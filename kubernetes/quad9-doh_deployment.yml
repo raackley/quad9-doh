@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quad9-doh
+  labels:
+    name: quad9-doh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quad9-doh
+  template:
+    metadata:
+      labels:
+        app: quad9-doh
+    spec:
+      containers:
+        - name: quad9-doh
+          image: raackley/quad9-doh
+          ports:
+          - containerPort: 53
+            protocol: UDP
