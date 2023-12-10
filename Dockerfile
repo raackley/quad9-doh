@@ -1,16 +1,14 @@
-FROM ubuntu:focal
+FROM debian:stable-slim
 
 LABEL maintainer="raackley@protonmail.com"
 
 RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y ca-certificates netcat && \
-    apt-get -y autoremove
+    apt-get install -y ncat
 
-ADD https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb /cloudflared-stable-linux-amd64.deb
+ADD https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb /cloudflared-linux-amd64.deb
 
-RUN dpkg -i /cloudflared-stable-linux-amd64.deb && \
-    rm /cloudflared-stable-linux-amd64.deb
+RUN dpkg -i /cloudflared-linux-amd64.deb && \
+    rm /cloudflared-linux-amd64.deb
 
 EXPOSE 53/tcp
 EXPOSE 53/udp
