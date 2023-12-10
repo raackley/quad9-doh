@@ -15,4 +15,4 @@ EXPOSE 53/udp
 
 HEALTHCHECK CMD nc 127.0.0.1 53 || exit 1
 
-CMD cloudflared proxy-dns --address 0.0.0.0 --upstream https://9.9.9.9:5053/dns-query --upstream https://149.112.112.112:5053/dns-query
+CMD cloudflared proxy-dns --address 0.0.0.0 --upstream https://dns.quad9.net/dns-query
