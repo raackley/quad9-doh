@@ -3,7 +3,7 @@ FROM debian:stable-slim
 LABEL maintainer="raackley@protonmail.com"
 
 RUN apt-get update && \
-    apt-get install -y ncat
+    apt-get install -y ca-certificates ncat
 
 ADD https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb /cloudflared-linux-amd64.deb
 
